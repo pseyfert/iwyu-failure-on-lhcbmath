@@ -1,0 +1,2 @@
+clang++ -pedantic -std=c++14 -I../Kernel/LHCbMath  -o Kernel/LHCbMath/CMakeFiles/LHCbMathLib.dir/src/Choose.cpp.o -c ../Kernel/LHCbMath/src/Choose.cpp -I/afs/cern.ch/sw/lcg/external/llvm/3.9/x86_64-centos7/lib/clang/3.9.0/include/
+include-what-you-use -pedantic -std=c++14 -I../Kernel/LHCbMath  -o Kernel/LHCbMath/CMakeFiles/LHCbMathLib.dir/src/Choose.cpp.o -c ../Kernel/LHCbMath/src/Choose.cpp -I/afs/cern.ch/sw/lcg/external/llvm/3.9/x86_64-centos7/lib/clang/3.9.0/include/

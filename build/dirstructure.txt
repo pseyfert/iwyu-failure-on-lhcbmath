@@ -1,0 +1,9 @@
+.
+|-- Kernel
+|   `-- LHCbMath
+|       `-- CMakeFiles
+|           `-- LHCbMathLib.dir
+|               `-- src
+`-- dirstructure.txt
+
+5 directories, 1 file
