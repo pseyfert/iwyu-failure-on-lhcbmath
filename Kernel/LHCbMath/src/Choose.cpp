@@ -68,7 +68,7 @@ namespace
  */
 // ============================================================================
 unsigned long long  
-choose 
+Math::choose 
 ( const unsigned short n , 
   const unsigned short k ) { return _choose_ ( n , k ) ; }
 // ============================================================================
@@ -77,7 +77,7 @@ choose
  *  @date 2015-03-08
  */
 // ============================================================================
-double choose_double 
+double Math::choose_double 
 ( const unsigned short n ,
   const unsigned short k ) 
 {
@@ -107,7 +107,7 @@ double choose_double
  *  @date 2015-03-08
  */
 // ============================================================================
-double gen_choose 
+double Math::gen_choose 
 ( const double         a ,
   const unsigned short k ) 
 {
@@ -134,7 +134,7 @@ double gen_choose
  *  @date 2015-03-08
  */
 // ============================================================================
-double choose_half 
+double Math::choose_half 
 ( const int            n ,
   const unsigned short k ) 
 {
@@ -163,7 +163,7 @@ double choose_half
  *  @date 2015-03-08
  */
 // ============================================================================
-double log_choose 
+double Math::log_choose 
 ( const unsigned short n ,
   const unsigned short k ) 
 {
