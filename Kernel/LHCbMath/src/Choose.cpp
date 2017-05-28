@@ -56,7 +56,7 @@ namespace
   }
   // ==========================================================================
   /// zero for doubles  
-  const LHCb::Math::Zero<double> s_zero{}  ;       // zero for doubles
+  const Zero<double> s_zero{}  ;       // zero for doubles
   // ==========================================================================
 }
 // ============================================================================
@@ -68,7 +68,7 @@ namespace
  */
 // ============================================================================
 unsigned long long  
-Math::choose 
+choose 
 ( const unsigned short n , 
   const unsigned short k ) { return _choose_ ( n , k ) ; }
 // ============================================================================
@@ -77,7 +77,7 @@ Math::choose
  *  @date 2015-03-08
  */
 // ============================================================================
-double Math::choose_double 
+double choose_double 
 ( const unsigned short n ,
   const unsigned short k ) 
 {
@@ -107,7 +107,7 @@ double Math::choose_double
  *  @date 2015-03-08
  */
 // ============================================================================
-double Math::gen_choose 
+double gen_choose 
 ( const double         a ,
   const unsigned short k ) 
 {
@@ -134,7 +134,7 @@ double Math::gen_choose
  *  @date 2015-03-08
  */
 // ============================================================================
-double Math::choose_half 
+double choose_half 
 ( const int            n ,
   const unsigned short k ) 
 {
@@ -153,8 +153,8 @@ double Math::choose_half
   }
   return 
     k < 63 ?
-    r / Math::pow ( 2L   , k ) : 
-    r / Math::pow ( 2.0L , k ) ;
+    r / pow ( 2L   , k ) : 
+    r / pow ( 2.0L , k ) ;
 }
 // ============================================================================
 /*  calculate the logarithm of binomial coefficient
@@ -163,7 +163,7 @@ double Math::choose_half
  *  @date 2015-03-08
  */
 // ============================================================================
-double Math::log_choose 
+double log_choose 
 ( const unsigned short n ,
   const unsigned short k ) 
 {

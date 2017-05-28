@@ -28,14 +28,6 @@
 #include "boost/static_assert.hpp"
 #include "boost/numeric/conversion/converter.hpp"
 // ============================================================================
-namespace LHCb 
-{
-  // ==========================================================================
-  /** @namespace LHCb::Math
-   *  Collection of math related functions for general use in LHCb
-   */
-  namespace Math 
-  {
     // ========================================================================
     /// Parameters for numerical calculations (M.Needham)
     static const double hiTolerance    = 1e-40;
@@ -49,7 +41,7 @@ namespace LHCb
      *  It corresponds to relative ("Knuth/GLS") tolerance of about ~6*10^-6
      *  for values in excess of 10^-37.
      *
-     *  @see Math::lomont_compare_float 
+     *  @see lomont_compare_float 
      *  @author Vanya BELYAEV Ivan.Belyaev@itep.ru
      *  @date 2010-01-02
      */
@@ -60,7 +52,7 @@ namespace LHCb
      *  It corresponds to relative ("Knuth/GLS") tolerance of about ~6*10^-5
      *  for values in excess of 10^-37.
      *
-     *  @see Math::lomont_compare_float 
+     *  @see lomont_compare_float 
      *  @author Vanya BELYAEV Ivan.Belyaev@itep.ru
      *  @date 2010-01-02
      */
@@ -70,7 +62,7 @@ namespace LHCb
      *  "tolerance" parameter for "Lomont"-compare of floating point numbers.
      *  It corresponds to relative ("Knuth/GLS") tolerance of about ~6*10^-13
      *  for values in excess of 10^-304.
-     *  @see Math::lomont_compare_double
+     *  @see lomont_compare_double
      *  @author Vanya BELYAEV Ivan.Belyaev@itep.ru
      *  @date 2010-01-02
      */
@@ -255,9 +247,9 @@ namespace LHCb
     struct NotZero<TYPE&>      : public NotZero<TYPE>  {} ;
     // ========================================================================
     /** specialisation for vectors 
-     *  @see Math::Zero
-     *  @see Math::Equal_To
-     *  @see Math::Lomont<float>
+     *  @see Zero
+     *  @see Equal_To
+     *  @see Lomont<float>
      */
     template < class TYPE>
     struct Zero< std::vector<TYPE> > 
@@ -338,7 +330,7 @@ namespace LHCb
     // ========================================================================
     /** @struct LessOrEqual
      *  check if two values ar less or equal (numerically)
-     *  @see Math::Equal_To
+     *  @see Equal_To
      */
     template <class TYPE>
     struct LessOrEqual : public std::binary_function<TYPE,TYPE,bool>
@@ -351,13 +343,13 @@ namespace LHCb
     private:
       // ======================================================================
       std::less_equal<TYPE>      m_leq   ; // ordering criteria 
-      LHCb::Math::Equal_To<TYPE> m_equal ; // equality criteria 
+      Equal_To<TYPE> m_equal ; // equality criteria 
       // ======================================================================
     } ;  
     // ========================================================================
     /** @struct GreaterOrEqual
      *  check if two values are greater or equal (numerically)
-     *  @see Math::Equal_To
+     *  @see Equal_To
      */
     template <class TYPE>
     struct GreaterOrEqual : public std::binary_function<TYPE,TYPE,bool>
@@ -370,14 +362,14 @@ namespace LHCb
     private:
       // ======================================================================
       std::greater_equal<TYPE>   m_geq   ; // ordering criteria 
-      LHCb::Math::Equal_To<TYPE> m_equal ; // equality criteria 
+      Equal_To<TYPE> m_equal ; // equality criteria 
       // ======================================================================
     } ;  
     // ========================================================================
     /** @struct  NumLess 
      *  "Numerically less"
      *  useful structure for sorting  
-     *  @see Math::Equal_To
+     *  @see Equal_To
      */
     template <class TYPE>
     struct NumLess :  public std::binary_function<TYPE,TYPE,bool>
@@ -391,37 +383,10 @@ namespace LHCb
       /// comparion criteria for objects 
       std::less<TYPE>            m_less  ; // comparion criteria for objects
       /// equality criteria for  objects  
-      LHCb::Math::Equal_To<TYPE> m_equal ; // equality criteria for objects  
+      Equal_To<TYPE> m_equal ; // equality criteria for objects  
       // ======================================================================
     } ;
     // ========================================================================
-    /** round to nearest integer, rounds half integers to nearest even integer 
-     *  It is just a simple wrapper around boost::numeric::converter 
-     *  @author Vanya BELYAEV Ivan.BElyaev
-     */
-    inline long round ( const double x ) 
-    {
-      typedef boost::numeric::RoundEven<double> Rounder ;
-      typedef boost::numeric::make_converter_from 
-        <double,
-        boost::numeric::silent_overflow_handler,
-        Rounder>::to<long>::type Converter ;
-      return Converter::convert ( x ) ; 
-    }
-    // ========================================================================
-    /** round to nearest integer, rounds half integers to nearest even integer 
-     *  It is just a simple wrapper around boost::numeric::converter 
-     *  @author Vanya BELYAEV Ivan.BElyaev
-     */
-    inline long round ( const float  x ) 
-    {
-      typedef boost::numeric::RoundEven<float> Rounder ;
-      typedef boost::numeric::make_converter_from 
-        <float,
-        boost::numeric::silent_overflow_handler,
-        Rounder>::to<long>::type Converter ;
-      return Converter::convert ( x ) ; 
-    }    
     // ========================================================================
     /** get mantissa and exponent 
      *  similar to std::frexp, but radix=10)
@@ -499,8 +464,8 @@ namespace LHCb
      *  @param val value to be compared with the integer 
      *  @param ref the reference integer number 
      *  @param mULPS the precision 
-     *  @see Math::lomont_compare_double 
-     *  @see LHCb::Math::mULPS_double
+     *  @see lomont_compare_double 
+     *  @see mULPS_double
      *  @author Vanya BELYAEV Ivan.Belyaev@nikhef.nl
      *  @date 2008-09-17
      */
@@ -513,8 +478,8 @@ namespace LHCb
      *  @param ref the reference integer  number 
      *  @param val value to be compared with the integer 
      *  @param mULPS the precision 
-     *  @see Math::lomont_compare_double 
-     *  @see LHCb::Math::mULPS_double
+     *  @see lomont_compare_double 
+     *  @see mULPS_double
      *  @author Vanya BELYAEV Ivan.Belyaev@nikhef.nl
      *  @date 2008-09-17
      */        
@@ -530,8 +495,8 @@ namespace LHCb
      *  @param val value to be compared with the unsigned integer 
      *  @param ref the reference unsigned integer number 
      *  @param mULPS the precision 
-     *  @see Math::lomont_compare_double 
-     *  @see LHCb::Math::mULPS_double
+     *  @see lomont_compare_double 
+     *  @see mULPS_double
      *  @author Vanya BELYAEV Ivan.Belyaev@nikhef.nl
      *  @date 2008-09-17
      */        
@@ -544,8 +509,8 @@ namespace LHCb
      *  @param val value to be compared with the unsigned integer 
      *  @param ref the reference unsigned integer number 
      *  @param mULPS the precision 
-     *  @see Math::lomont_compare_double 
-     *  @see LHCb::Math::mULPS_double
+     *  @see lomont_compare_double 
+     *  @see mULPS_double
      *  @author Vanya BELYAEV Ivan.Belyaev@nikhef.nl
      *  @date 2008-09-17
      */        
@@ -595,24 +560,12 @@ namespace LHCb
       return 
         0 < value ? std::sqrt ( value ) : -std::sqrt( std::abs ( value ) ) ;
     }  
-    // ========================================================================
-  } //                                              end of namespace LHCb::Math 
   // ==========================================================================
-} //                                                      end of namespace LHCb 
-// ============================================================================
-  // ==========================================================================
-  namespace Math
-  {
     // ========================================================================
-    using LHCb::Math::scale ;
-    using LHCb::Math::shift ;
     // ========================================================================
-  } //                                             end of namespace Math
   // ==========================================================================
 // ============================================================================
   // ==========================================================================
-  namespace Math
-  {
     // ========================================================================
     /** make dot-multiplication of two sequences using std::fma 
      *  \f$ r = \sum_i  x_i y_i \f$
@@ -663,7 +616,6 @@ namespace LHCb
     { return dot_fma ( x.begin() , x.end() , y.begin() ) ; }
     // ========================================================================
   // ==========================================================================
-}
 // ============================================================================
 // The END 
 // ============================================================================
